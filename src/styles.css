@@ -625,3 +625,1235 @@ svg { flex-shrink: 0; }
     animation: none;
   }
 }
+
+
+/* ========== Developer Profile Hero ========== */
+
+.hero-photo-frame {
+  position: relative;
+  margin: 0;
+  width: min(100%, 450px);
+  aspect-ratio: 4 / 4.55;
+  max-height: 530px;
+  padding: 6px;
+  overflow: hidden;
+
+  border-radius: 25px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(166, 135, 255, 0.8),
+    rgba(105, 218, 238, 0.16) 45%,
+    rgba(151, 138, 244, 0.45)
+  );
+
+  box-shadow:
+    0 26px 70px rgba(0, 0, 0, 0.36),
+    0 0 56px rgba(115, 83, 237, 0.12);
+
+  z-index: 1;
+}
+
+.hero-portrait {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center 33%;
+
+  border-radius: 20px;
+}
+
+.hero-photo-caption {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 11px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 11px;
+
+  background: rgba(11, 17, 33, 0.8);
+  backdrop-filter: blur(12px);
+
+  color: #f5f2ff;
+  font-size: 12px;
+  font-weight: 700;
+
+  box-shadow: 0 9px 23px rgba(0, 0, 0, 0.2);
+}
+
+/* Tablet */
+@media (max-width: 830px) {
+  .hero-art {
+    height: auto;
+    min-height: 0;
+    margin: 25px auto 10px;
+  }
+
+  .hero-photo-frame {
+    width: min(100%, 420px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 620px) {
+  .hero-art {
+    height: auto;
+    min-height: 0;
+    margin-top: 24px;
+  }
+
+  .hero-photo-frame {
+    width: min(100%, 360px);
+    padding: 4px;
+    border-radius: 19px;
+  }
+
+  .hero-portrait {
+    border-radius: 15px;
+  }
+
+  .hero-photo-caption {
+    bottom: 14px;
+    left: 14px;
+    padding: 8px 11px;
+    font-size: 11px;
+  }
+}
+
+
+
+/* ===== Portfolio Analytics ===== */
+
+.portfolio-analytics {
+  position: relative;
+  padding: 90px 0;
+  background: linear-gradient(
+    180deg,
+    #0B1020 0%,
+    #10132A 55%,
+    #0B1020 100%
+  );
+}
+
+.analytics-heading {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.analytics-eyebrow {
+  color: #A78BFA;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.analytics-heading h2 {
+  margin: 15px 0;
+  font-size: clamp(30px, 4vw, 48px);
+  color: #FFFFFF;
+  letter-spacing: -1.5px;
+}
+
+.analytics-heading p {
+  color: #9AA5BC;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Circular Skills */
+
+.analytics-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.analytics-skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  padding: 28px 15px;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    145deg,
+    #1B203B,
+    #12172D
+  );
+
+  border: 1px solid rgba(167, 139, 250, 0.15);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.analytics-skill-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Progress Ring */
+
+.analytics-ring {
+  position: relative;
+  width: 145px;
+  height: 145px;
+  margin-bottom: 18px;
+}
+
+.analytics-ring svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.analytics-ring-track {
+  fill: none;
+  stroke: #30364F;
+  stroke-width: 9;
+}
+
+.analytics-ring-progress {
+  filter: drop-shadow(0 0 5px rgba(167, 139, 250, 0.22));
+}
+
+.analytics-ring-value {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #F4F0FF;
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.analytics-skill-card h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  color: #FFFFFF;
+}
+
+.analytics-skill-card p {
+  margin: 0;
+  color: #929CB4;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Achievement Counters */
+
+.analytics-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.analytics-stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  height: 130px;
+  padding: 16px;
+  text-align: center;
+
+  background: rgba(139, 92, 246, 0.055);
+  border: 1px solid rgba(167, 139, 250, 0.14);
+  border-radius: 16px;
+}
+
+.analytics-stat-value {
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.1;
+
+  background: linear-gradient(
+    110deg,
+    #E6DAFF,
+    #A78BFA,
+    #6ED4ED
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.analytics-stat-label {
+  font-size: 12px;
+  color: #BEC5D9;
+}
+
+.analytics-disclaimer {
+  margin: 22px 0 0;
+  text-align: center;
+  color: #8892AA;
+  font-size: 11px;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .analytics-skills-grid,
+  .analytics-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .portfolio-analytics {
+    padding: 60px 0;
+  }
+
+  .analytics-heading {
+    margin-bottom: 30px;
+  }
+
+  .analytics-skills-grid,
+  .analytics-stats-grid {
+    gap: 12px;
+  }
+
+  .analytics-skill-card {
+    padding: 20px 10px;
+    border-radius: 16px;
+  }
+
+  .analytics-ring {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 14px;
+  }
+
+  .analytics-ring-value {
+    font-size: 24px;
+  }
+
+  .analytics-skill-card h3 {
+    font-size: 14px;
+  }
+
+  .analytics-skill-card p {
+    font-size: 11px;
+  }
+
+  .analytics-stat-card {
+    height: 112px;
+  }
+
+  .analytics-stat-value {
+    font-size: 32px;
+  }
+
+  .analytics-stat-label {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .analytics-skill-card {
+    transition: none;
+  }
+
+  .analytics-skill-card:hover {
+    transform: none;
+  }
+}
+
+
+/* ===== Enhanced Analytics Animations ===== */
+
+.analytics-skill-card,
+.analytics-stat-card {
+  will-change: transform;
+}
+
+.analytics-skill-card {
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.analytics-skill-card:hover {
+  border-color: rgba(167, 139, 250, 0.55);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.2),
+    0 0 28px rgba(139, 92, 246, 0.14);
+}
+
+.analytics-ring-progress {
+  filter:
+    drop-shadow(0 0 6px rgba(167, 139, 250, 0.35));
+}
+
+.analytics-ring-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.analytics-stat-card {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.analytics-stat-card:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+  box-shadow:
+    0 14px 35px rgba(139, 92, 246, 0.14);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .analytics-skill-card,
+  .analytics-stat-card {
+    transition: none;
+    will-change: auto;
+  }
+}
+
+
+/* ==========================================================
+   ANIMATIONS: paste at the very END of your main CSS file
+   (or save as animations.css and import it after your CSS)
+   ========================================================== */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---------- Buttons ---------- */
+
+.button,
+.nav-resume {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.3s var(--ease-spring),
+    box-shadow 0.3s var(--ease-out),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* shine sweep */
+.button::before,
+.nav-resume::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-out);
+}
+
+.button:hover::before,
+.nav-resume:hover::before {
+  transform: translateX(120%);
+}
+
+.button:hover,
+.nav-resume:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(99, 102, 241, 0.3);
+}
+
+.button:active,
+.nav-resume:active {
+  transform: translateY(0) scale(0.96);
+  box-shadow: none;
+  transition-duration: 0.1s;
+}
+
+.button svg,
+.nav-resume svg,
+.text-link svg,
+.hero-shortcuts a svg,
+.contact-profiles a svg,
+.mobile-menu a svg {
+  transition: transform 0.3s var(--ease-out);
+}
+
+/* arrows nudge diagonally, download icon bounces down */
+.button:hover svg,
+.hero-shortcuts a:hover svg,
+.contact-profiles a:hover svg,
+.project-code-link:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.nav-resume:hover svg,
+.button[download]:hover svg {
+  transform: translateY(3px);
+}
+
+.text-link:hover svg {
+  transform: translateX(5px);
+}
+
+.button:focus-visible,
+.nav-resume:focus-visible,
+.filter-pill:focus-visible,
+.text-link:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 3px;
+}
+
+/* ---------- Navbar ---------- */
+
+.site-nav {
+  transition:
+    background-color 0.35s ease,
+    box-shadow 0.35s ease,
+    backdrop-filter 0.35s ease,
+    padding 0.35s var(--ease-out);
+}
+
+.nav-links a,
+.mobile-menu a {
+  position: relative;
+  transition: color 0.25s ease, transform 0.25s var(--ease-out);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #a78bfa, #38bdf8);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.mobile-menu a:hover {
+  transform: translateX(6px);
+}
+
+.wordmark-avatar {
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s ease;
+}
+
+.wordmark-avatar:hover {
+  transform: scale(1.1) rotate(-4deg);
+  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.35);
+}
+
+.wordmark-avatar:active {
+  transform: scale(0.95);
+}
+
+.mobile-menu-toggle {
+  transition: transform 0.25s var(--ease-spring), background-color 0.25s ease;
+}
+
+.mobile-menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+.mobile-menu-toggle:active {
+  transform: scale(0.9) rotate(90deg);
+}
+
+/* profile photo dialog */
+.photo-dialog {
+  border: none;
+  padding: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.photo-dialog[open] {
+  animation: dialogIn 0.4s var(--ease-spring);
+}
+
+.photo-dialog::backdrop {
+  background: rgba(8, 10, 24, 0.7);
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.3s ease;
+}
+
+/* ---------- Hero ---------- */
+
+.name-gradient,
+.text-gradient {
+  background-size: 200% auto;
+  animation: gradientShift 6s ease-in-out infinite;
+}
+
+.hero-ambient-one {
+  animation: floatA 14s ease-in-out infinite;
+}
+
+.hero-ambient-two {
+  animation: floatB 18s ease-in-out infinite;
+}
+
+.hero-art-glow {
+  animation: glowPulse 5s ease-in-out infinite;
+}
+
+.hero-photo-frame {
+  animation: floatY 6s ease-in-out 1s infinite;
+}
+
+.status-dot {
+  position: relative;
+  animation: dotPulse 2s ease-out infinite;
+}
+
+.hero-bottom svg {
+  animation: bounceDown 1.6s ease-in-out infinite;
+}
+
+.hero-shortcuts a,
+.contact-profiles a,
+.footer a {
+  transition: color 0.25s ease, transform 0.25s var(--ease-out);
+}
+
+.hero-shortcuts a:hover,
+.contact-profiles a:hover,
+.footer a:hover {
+  transform: translateY(-2px);
+}
+
+.hero-shortcuts > span {
+  display: inline-block;
+  animation: spinSlow 8s linear infinite;
+}
+
+/* ---------- Cards ---------- */
+
+.expertise-card,
+.project-card,
+.experience-item,
+.education-card,
+.github-cta {
+  transition:
+    transform 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out),
+    border-color 0.4s ease;
+}
+
+.expertise-card:hover,
+.project-card:hover,
+.experience-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
+}
+
+.education-card:hover,
+.github-cta:hover {
+  transform: translateY(-4px);
+}
+
+.expertise-icon,
+.education-icon,
+.github-cta-icon,
+.experience-marker {
+  transition: transform 0.45s var(--ease-spring);
+}
+
+.expertise-card:hover .expertise-icon,
+.education-card:hover .education-icon,
+.github-cta:hover .github-cta-icon {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+.experience-item:hover .experience-marker {
+  transform: scale(1.15);
+}
+
+.project-visual {
+  overflow: hidden;
+}
+
+.project-visual .visual-content {
+  transition: transform 0.7s var(--ease-out);
+}
+
+.project-card:hover .visual-content {
+  transform: scale(1.06);
+}
+
+.visual-floating-label {
+  animation: floatY 4s ease-in-out infinite;
+}
+
+/* tags & chips */
+.tags span,
+.project-tech span,
+.experience-tags span {
+  transition: transform 0.25s var(--ease-spring), background-color 0.25s ease;
+}
+
+.tags span:hover,
+.project-tech span:hover,
+.experience-tags span:hover {
+  transform: translateY(-3px) scale(1.06);
+}
+
+.project-highlights li {
+  transition: transform 0.3s var(--ease-out);
+}
+
+.project-card:hover .project-highlights li {
+  transform: translateX(4px);
+}
+
+.project-code-link {
+  transition: color 0.25s ease, transform 0.25s var(--ease-out);
+}
+
+.project-code-link:hover {
+  transform: translateX(4px);
+}
+
+/* ---------- Filter pills ---------- */
+
+.filter-pill {
+  transition:
+    transform 0.3s var(--ease-spring),
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.filter-pill:hover {
+  transform: translateY(-2px);
+}
+
+.filter-pill:active {
+  transform: scale(0.94);
+}
+
+.filter-pill.is-active {
+  animation: pillPop 0.4s var(--ease-spring);
+}
+
+/* project cards re-entering after a filter change */
+.projects-grid .project-card {
+  animation: cardIn 0.55s var(--ease-out) both;
+}
+
+.projects-grid .project-card:nth-child(2) { animation-delay: 0.06s; }
+.projects-grid .project-card:nth-child(3) { animation-delay: 0.12s; }
+.projects-grid .project-card:nth-child(4) { animation-delay: 0.18s; }
+.projects-grid .project-card:nth-child(5) { animation-delay: 0.24s; }
+.projects-grid .project-card:nth-child(6) { animation-delay: 0.3s; }
+
+/* ---------- Analytics ---------- */
+
+.analytics-skill-card,
+.analytics-stat-card {
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.analytics-skill-card:hover,
+.analytics-stat-card:hover {
+  box-shadow: 0 20px 44px rgba(99, 102, 241, 0.25);
+}
+
+/* ---------- Contact ---------- */
+
+.contact-glow {
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+.contact-email {
+  transition: letter-spacing 0.4s var(--ease-out), color 0.25s ease;
+}
+
+.contact-email:hover {
+  letter-spacing: 0.5px;
+}
+
+/* ---------- WhatsApp floating button ---------- */
+
+.whatsapp-float {
+  animation: whatsappIn 0.7s var(--ease-spring) 1.2s both, whatsappRing 2.6s ease-out 2s infinite;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.14) rotate(-8deg);
+  animation-play-state: running, paused;
+}
+
+.whatsapp-float:active {
+  transform: scale(0.92);
+}
+
+/* ---------- Footer ---------- */
+
+.footer-logo span {
+  display: inline-block;
+  animation: dotBlink 1.6s ease-in-out infinite;
+}
+
+/* ---------- Smooth scrolling & selection ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.section-anchor {
+  scroll-margin-top: 84px;
+}
+
+::selection {
+  background: rgba(167, 139, 250, 0.35);
+}
+
+/* ==========================================================
+   Keyframes
+   ========================================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes dialogIn {
+  from { opacity: 0; transform: scale(0.85) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pillPop {
+  0%   { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes floatA {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(40px, -30px) scale(1.1); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-50px, 30px) scale(1.15); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 0.95; transform: scale(1.08); }
+}
+
+@keyframes dotPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6); }
+  70%  { box-shadow: 0 0 0 9px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dotBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.25; }
+}
+
+@keyframes whatsappIn {
+  from { opacity: 0; transform: scale(0) rotate(-90deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes whatsappRing {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+  70%  { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ==========================================================
+   Accessibility: switch everything off for users who ask
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ==========================================================
+   BLOCK ANIMATIONS: paste AFTER animations.css (very end)
+   Adds animated borders, glows, floating and shine to cards.
+   ========================================================== */
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* ---------- 1. Rotating gradient border on hover ---------- */
+
+.expertise-card,
+.project-card,
+.experience-item,
+.education-card,
+.github-cta,
+.analytics-skill-card,
+.analytics-stat-card,
+.about-facts > div,
+.contact-panel {
+  position: relative;
+}
+
+.expertise-card::after,
+.project-card::after,
+.experience-item::after,
+.education-card::after,
+.github-cta::after,
+.analytics-skill-card::after,
+.analytics-stat-card::after,
+.about-facts > div::after,
+.contact-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0deg,
+    #a78bfa 70deg,
+    #38bdf8 140deg,
+    #2dd4bf 200deg,
+    transparent 270deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: borderSpin 3.5s linear infinite;
+}
+
+.expertise-card:hover::after,
+.project-card:hover::after,
+.experience-item:hover::after,
+.education-card:hover::after,
+.github-cta:hover::after,
+.analytics-skill-card:hover::after,
+.analytics-stat-card:hover::after,
+.about-facts > div:hover::after,
+.contact-panel:hover::after {
+  opacity: 1;
+}
+
+/* ---------- 2. Soft glow that follows the card colour ---------- */
+
+.expertise-violet:hover { box-shadow: 0 22px 50px rgba(167, 139, 250, 0.35); }
+.expertise-blue:hover   { box-shadow: 0 22px 50px rgba(56, 189, 248, 0.35); }
+.expertise-teal:hover   { box-shadow: 0 22px 50px rgba(45, 212, 191, 0.35); }
+.expertise-pink:hover   { box-shadow: 0 22px 50px rgba(244, 114, 182, 0.35); }
+
+/* ---------- 3. Diagonal shine sweeping across cards ---------- */
+
+.expertise-card,
+.project-info,
+.education-card,
+.analytics-stat-card {
+  overflow: hidden;
+}
+
+.expertise-card::before,
+.education-card::before,
+.analytics-stat-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.16),
+    transparent
+  );
+  transform: rotate(18deg) translateX(0);
+  transition: none;
+}
+
+.expertise-card:hover::before,
+.education-card:hover::before,
+.analytics-stat-card:hover::before {
+  animation: cardShine 0.9s var(--ease-out);
+}
+
+/* ---------- 4. Gentle idle floating (staggered) ---------- */
+
+.expertise-grid-item:nth-child(odd) .expertise-card {
+  animation: blockFloat 6s ease-in-out infinite;
+}
+
+.expertise-grid-item:nth-child(even) .expertise-card {
+  animation: blockFloat 7s ease-in-out 0.8s infinite;
+}
+
+.expertise-card:hover {
+  animation-play-state: paused;
+}
+
+.about-facts > div {
+  animation: blockFloat 5.5s ease-in-out infinite;
+}
+
+.about-facts > div:nth-child(2) { animation-delay: 0.6s; }
+.about-facts > div:nth-child(3) { animation-delay: 1.2s; }
+
+/* ---------- 5. Numbers & icons inside blocks ---------- */
+
+.expertise-card-top > span,
+.project-visual .visual-top-label span:last-child {
+  transition: transform 0.4s var(--ease-spring), color 0.3s ease;
+}
+
+.expertise-card:hover .expertise-card-top > span {
+  transform: scale(1.25) translateX(-4px);
+}
+
+.expertise-icon {
+  animation: iconBreath 4s ease-in-out infinite;
+}
+
+.expertise-card h3,
+.project-info h3,
+.experience-body h3 {
+  transition: transform 0.35s var(--ease-out), color 0.3s ease;
+}
+
+.expertise-card:hover h3,
+.project-card:hover .project-info h3,
+.experience-item:hover h3 {
+  transform: translateX(5px);
+}
+
+.analytics-ring-progress {
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.analytics-skill-card:hover .analytics-ring {
+  animation: ringWobble 0.8s var(--ease-spring);
+}
+
+.analytics-stat-value {
+  display: inline-block;
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.analytics-stat-card:hover .analytics-stat-value {
+  transform: scale(1.15);
+}
+
+/* ---------- 6. Project visual details come alive ---------- */
+
+.visual-phone,
+.visual-dashboard,
+.visual-browser,
+.visual-mini-panel,
+.rental-card {
+  animation: floatY 5s ease-in-out infinite;
+}
+
+.plant-orb {
+  animation: orbPulse 3s ease-in-out infinite;
+}
+
+.visual-progress span,
+.dash-bar span {
+  transform-origin: left;
+  animation: barGrow 2.2s var(--ease-out) both;
+}
+
+.rental-one { animation: floatA 12s ease-in-out infinite; }
+.rental-two { animation: floatB 15s ease-in-out infinite; }
+
+.safety-nodes span {
+  animation: nodeBlink 2.4s ease-in-out infinite;
+}
+
+.safety-nodes span:nth-child(2) { animation-delay: 0.5s; }
+.safety-nodes span:nth-child(3) { animation-delay: 1s; }
+
+.safety-circuit svg {
+  animation: orbPulse 3s ease-in-out infinite;
+}
+
+.concept-tag {
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-out);
+}
+
+.project-card:hover .concept-tag {
+  transform: translateY(-2px);
+}
+
+/* ---------- 7. Experience timeline ---------- */
+
+.experience-marker {
+  animation: markerPulse 2.6s ease-out infinite;
+}
+
+.experience-item:nth-child(2) .experience-marker {
+  animation-delay: 1.2s;
+}
+
+/* ---------- 8. Contact panel ---------- */
+
+.contact-panel {
+  overflow: hidden;
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s ease;
+}
+
+.contact-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px rgba(99, 102, 241, 0.3);
+}
+
+/* ---------- 9. Section headings underline reveal ---------- */
+
+.section-eyebrow i {
+  display: inline-block;
+  transform-origin: left;
+  animation: lineGrow 1.2s var(--ease-out) both;
+}
+
+/* ==========================================================
+   Keyframes
+   ========================================================== */
+
+@keyframes borderSpin {
+  to { --angle: 360deg; }
+}
+
+@keyframes cardShine {
+  from { left: -60%; }
+  to   { left: 140%; }
+}
+
+@keyframes blockFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@keyframes iconBreath {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+
+@keyframes ringWobble {
+  0%   { transform: rotate(0) scale(1); }
+  40%  { transform: rotate(-6deg) scale(1.06); }
+  100% { transform: rotate(0) scale(1); }
+}
+
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1);    opacity: 0.9; }
+  50%      { transform: scale(1.1);  opacity: 1; }
+}
+
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes nodeBlink {
+  0%, 100% { opacity: 0.55; transform: translateY(0); }
+  50%      { opacity: 1;    transform: translateY(-3px); }
+}
+
+@keyframes markerPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.55); }
+  70%  { box-shadow: 0 0 0 12px rgba(167, 139, 250, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0); }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Respect reduced-motion (the rule in animations.css covers this
+   file too, repeated here so it also works on its own). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
