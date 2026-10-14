@@ -864,7 +864,7 @@ function Experience() {
   return (
     <section id="experience" className="section section-anchor experience-section">
       <div className="container">
-        <SectionHeading number="04" eyebrow="MY JOURNEY" title="Experience &" highlight="education.">
+        <SectionHeading number="04" eyebrow="MY JOURNEY" title="Experience &" highlight="Education.">
           Professional team experience supported by a foundation in computer science and hands-on project development.
         </SectionHeading>
 
@@ -916,18 +916,29 @@ function Experience() {
 /* Contact & Footer                                                    */
 /* ------------------------------------------------------------------ */
 
+const CONTACT_FORM_ENDPOINT =
+  "https://formspree.io/f/mljgpvvw";
+
 function Contact() {
   const [copied, setCopied] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [formStatus, setFormStatus] = useState({
+    type: "",
+    message: "",
+  });
 
   useEffect(() => {
     if (!copied) return;
-    const timer = window.setTimeout(() => setCopied(false), 2200);
-    return () => window.clearTimeout(timer);
+
+    const timer = setTimeout(() => {
+      setCopied(false);
+    }, 2200);
+
+    return () => clearTimeout(timer);
   }, [copied]);
 
   const copyEmail = async () => {
     try {
-      if (!navigator.clipboard) throw new Error("Clipboard not supported");
       await navigator.clipboard.writeText(PROFILE.email);
       setCopied(true);
     } catch {
@@ -935,33 +946,261 @@ function Contact() {
     }
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (isSending) return;
+
+    if (CONTACT_FORM_ENDPOINT.includes("YOUR_FORM_ID")) {
+      setFormStatus({
+        type: "error",
+        message: "Please configure your Formspree endpoint.",
+      });
+      return;
+    }
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setIsSending(true);
+    setFormStatus({ type: "", message: "" });
+
+    try {
+      const response = await fetch(CONTACT_FORM_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Message delivery failed.");
+      }
+
+      form.reset();
+
+      setFormStatus({
+        type: "success",
+        message: "Thank you! Your message has been sent successfully.",
+      });
+    } catch {
+      setFormStatus({
+        type: "error",
+        message: "Unable to send. Please try again or email me directly.",
+      });
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
-    <section id="contact" className="section section-anchor contact-section">
+    <section
+      id="contact"
+      className="section section-anchor contact-section"
+    >
       <div className="container">
         <Reveal>
           <div className="contact-panel">
-            <div className="contact-glow" aria-hidden="true" />
-            <div className="contact-inner">
-              <Eyebrow number="05">LET'S CONNECT</Eyebrow>
-              <h2>Have Something <span className="text-gradient">in Mind?</span></h2>
-              <p>I'm always interested in meaningful software projects, technical conversations, and opportunities to build something useful.</p>
+            <div
+              className="contact-glow"
+              aria-hidden="true"
+            />
 
+            <div className="contact-inner">
+              <Eyebrow number="05">
+                LET'S CONNECT
+              </Eyebrow>
+
+              <h2>
+                Have a question{" "}
+                <span className="text-gradient">
+                  or project idea?
+                </span>
+              </h2>
+
+              <p>
+                Have a project, collaboration, job opportunity,
+                or general question? Feel free to get in touch.
+              </p>
+
+              {/* CONTACT FORM */}
+              <form
+                className="portfolio-contact-form"
+                onSubmit={handleSubmit}
+              >
+                <div
+                  className="contact-honeypot"
+                  aria-hidden="true"
+                >
+                  <label htmlFor="contact-website">
+                    Leave empty
+                  </label>
+                  <input
+                    id="contact-website"
+                    type="text"
+                    name="_gotcha"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div className="contact-form-grid">
+
+                  {/* NAME */}
+                  <div className="contact-field">
+                    <label htmlFor="contact-name">
+                      Full Name *
+                    </label>
+
+                    <input
+                      id="contact-name"
+                      type="text"
+                      name="name"
+                      placeholder="Enter your full name"
+                      autoComplete="name"
+                      minLength={2}
+                      maxLength={100}
+                      required
+                    />
+                  </div>
+
+                  {/* EMAIL */}
+                  <div className="contact-field">
+                    <label htmlFor="contact-email">
+                      Email Address *
+                    </label>
+
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      placeholder="you@example.com"
+                      autoComplete="email"
+                      maxLength={254}
+                      required
+                    />
+                  </div>
+
+                  {/* SUBJECT */}
+                  <div className="contact-field contact-field-full">
+                    <label htmlFor="contact-subject">
+                      Subject *
+                    </label>
+
+                    <input
+                      id="contact-subject"
+                      type="text"
+                      name="subject"
+                      placeholder="What would you like to discuss?"
+                      maxLength={150}
+                      required
+                    />
+                  </div>
+
+                  {/* MESSAGE */}
+                  <div className="contact-field contact-field-full">
+                    <label htmlFor="contact-message">
+                      Your Message *
+                    </label>
+
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      rows={6}
+                      minLength={10}
+                      maxLength={5000}
+                      placeholder="Tell me about your question or project..."
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* SEND BUTTON */}
+                <div className="contact-form-bottom">
+                  <span className="contact-form-help">
+                    I'll be happy to hear from you.
+                  </span>
+
+                  <button
+                    type="submit"
+                    className="button button-primary contact-send"
+                    disabled={isSending}
+                  >
+                    {isSending ? "Sending..." : "Send Message"}
+
+                    {!isSending && (
+                      <ArrowUpRight size={18} />
+                    )}
+                  </button>
+                </div>
+
+                {/* SUCCESS / ERROR */}
+                {formStatus.message && (
+                  <p
+                    className={`contact-form-status contact-form-status--${formStatus.type}`}
+                    role={
+                      formStatus.type === "error"
+                        ? "alert"
+                        : "status"
+                    }
+                  >
+                    {formStatus.message}
+                  </p>
+                )}
+              </form>
+
+              {/* EXISTING CONTACT OPTIONS */}
               <div className="contact-actions">
-                <a href={`mailto:${PROFILE.email}`} className="button button-primary">
-                  <Mail size={18} /> Send an Email <ArrowUpRight size={17} />
+                <a
+                  href={`mailto:${PROFILE.email}`}
+                  className="button button-secondary"
+                >
+                  <Mail size={18} />
+                  Email Directly
+                  <ArrowUpRight size={17} />
                 </a>
-                <button type="button" className="button button-secondary" onClick={copyEmail}>
-                  {copied ? <Check size={17} /> : <MousePointer2 size={17} />}{" "}
-                  {copied ? "Email copied" : "Copy email"}
+
+                <button
+                  type="button"
+                  className="button button-secondary"
+                  onClick={copyEmail}
+                >
+                  {copied ? (
+                    <Check size={17} />
+                  ) : (
+                    <MousePointer2 size={17} />
+                  )}
+
+                  {copied ? "Email Copied" : "Copy Email"}
                 </button>
               </div>
 
-              <div className="contact-email">{PROFILE.email}</div>
+              <div className="contact-email">
+                {PROFILE.email}
+              </div>
 
               <div className="contact-profiles">
-                <ExternalLinkItem href={PROFILE.github}>GitHub</ExternalLinkItem>
-                <ExternalLinkItem href={PROFILE.linkedin}>LinkedIn</ExternalLinkItem>
-                <span><MapPin size={14} />{PROFILE.location}</span>
+                <a
+                  href={PROFILE.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub <ArrowUpRight size={14} />
+                </a>
+
+                <a
+                  href={PROFILE.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn <ArrowUpRight size={14} />
+                </a>
+
+                <span>
+                  <MapPin size={14} />
+                  {PROFILE.location}
+                </span>
               </div>
             </div>
           </div>
