@@ -406,7 +406,7 @@ function HeroArtwork() {
         />
         <figcaption className="hero-photo-caption">
           <span className="status-dot" />
-          React Native Developer
+          Software Developer
         </figcaption>
         <NeonTrace />
       </motion.figure>
