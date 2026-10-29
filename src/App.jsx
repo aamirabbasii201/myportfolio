@@ -9,11 +9,23 @@ import {
   BriefcaseBusiness,
   CalendarDays,
   Check,
+  Copy,
+  Send,
   ChevronRight,
   Code2,
   Database,
   Download,
   ExternalLink,
+  Github,
+  Linkedin,
+  Quote,
+  Target,
+  Layers3,
+  Lightbulb,
+  Rocket,
+  TrendingUp,
+  MessageCircle,
+  CheckCircle2,
   GraduationCap,
   Mail,
   MapPin,
@@ -48,7 +60,9 @@ const NAV_ITEMS = [
   { label: "About", href: "#about" },
   { label: "Expertise", href: "#expertise" },
   { label: "Projects", href: "#projects" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "Experience", href: "#experience" },
+  { label: "Approach", href: "#approach" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -99,6 +113,7 @@ const PROJECTS = [
     highlights: ["AI-powered plant analysis", "My Garden with SQLite / OP-SQLite", "Pexels & Open-Meteo APIs"],
     stack: ["React Native", "JavaScript", "AI APIs", "SQLite"],
     visual: "plant",
+    githubAliases: ["plantcareai", "plantcare", "plant-care", "plant-care-ai"],
   },
   {
     id: "elearning",
@@ -111,6 +126,7 @@ const PROJECTS = [
     highlights: ["Admin, teacher & student roles", "Progressive course content and quizzes", "Certificate workflows"],
     stack: ["React Native", "ASP.NET Web API", "SQL Server", "C#"],
     visual: "learning",
+    githubAliases: ["e-learning-platform", "elearning", "e-learning"],
     github: "https://github.com/aamirabbasii201/E-Learning-Platform",
   },
   {
@@ -124,6 +140,7 @@ const PROJECTS = [
     highlights: ["Responsive layouts", "Reusable React components", "Firebase integration"],
     stack: ["React.js", "Firebase", "JavaScript", "CSS"],
     visual: "cab",
+    githubAliases: ["primecab", "prime-cab", "primecabsolutions"],
   },
   {
     id: "hotel",
@@ -136,6 +153,7 @@ const PROJECTS = [
     highlights: ["Room reservation workflows", "Billing & customer records", "Relational database design"],
     stack: ["C#", "Windows Forms", "SQL Server"],
     visual: "hotel",
+    githubAliases: ["hotelmanagement", "hotel-management", "hotelsystem"],
   },
   {
     id: "rental",
@@ -148,6 +166,7 @@ const PROJECTS = [
     highlights: ["Responsive frontend", "Rental data management", "SQL Server integration"],
     stack: ["HTML", "CSS", "JavaScript", "SQL Server"],
     visual: "rental",
+    githubAliases: ["carrental", "car-rental", "rentalmanagement"],
   },
   {
     id: "safety",
@@ -160,6 +179,7 @@ const PROJECTS = [
     highlights: ["Digital circuit design", "Safety event detection logic", "Hardware simulation"],
     stack: ["Logic Gates", "Circuit Design", "Simulation"],
     visual: "safety",
+    githubAliases: ["smarthomesafety", "smart-home", "digital-logic", "homesafety"],
   },
 ];
 
@@ -173,10 +193,10 @@ const ANALYTICS_SKILLS = [
 ];
 
 const ANALYTICS_STATS = [
-  { value: "10+", label: "Projects Delivered" },
   { value: "06", label: "Featured Projects" },
+  { value: "04", label: "Core Specialties" },
   { value: "02", label: "Companies Worked With" },
-  { value: "05", label: "Months Industry Experience" },
+  { value: "05", label: "Months Team Experience" },
 ];
 
 const JOBS = [
@@ -247,6 +267,11 @@ function ExternalLinkItem({ href, children, size = 14 }) {
       {children} <ArrowUpRight size={size} />
     </a>
   );
+}
+
+/** Independent animated edge layer; does not obstruct clickable content. */
+function NeonTrace() {
+  return <span className="neon-trace" aria-hidden="true" />;
 }
 
 /* ------------------------------------------------------------------ */
@@ -366,7 +391,7 @@ function HeroArtwork() {
     <div className="hero-art">
       <div className="hero-art-glow" aria-hidden="true" />
       <motion.figure
-        className="hero-photo-frame"
+        className="hero-photo-frame neon-frame neon-frame--portrait"
         initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
@@ -381,8 +406,9 @@ function HeroArtwork() {
         />
         <figcaption className="hero-photo-caption">
           <span className="status-dot" />
-          React Native Developer
+          Software Developer
         </figcaption>
+        <NeonTrace />
       </motion.figure>
     </div>
   );
@@ -415,7 +441,7 @@ function Hero() {
           </motion.h1>
 
           <motion.p className="hero-description" {...fadeUp(18, { duration: 0.7, delay: 0.29 })}>
-            Full-stack software developer building mobile apps, responsive websites, secure APIs, and AI-powered experiences—with the details that make great products feel effortless.
+            Computer Science graduate focused on React Native, React, .NET APIs, and practical AI integrations. I design and build thoughtful digital experiences, from a smooth interface to the data behind it.
           </motion.p>
 
           <motion.div className="hero-cta" {...fadeUp(14, { delay: 0.42 })}>
@@ -496,7 +522,7 @@ function CircularProgress({ name, percent, color, description }) {
   return (
     <motion.div
       ref={ref}
-      className="analytics-skill-card"
+      className="analytics-skill-card neon-frame"
       initial={reduceMotion ? false : { opacity: 0, y: 35, scale: 0.94 }}
       animate={inView ? { opacity: 1, y: 0, scale: 1 } : undefined}
       transition={{ duration: reduceMotion ? 0 : 0.65, ease: "easeOut" }}
@@ -535,6 +561,7 @@ function CircularProgress({ name, percent, color, description }) {
 
       <h3>{name}</h3>
       <p>{description}</p>
+      <NeonTrace />
     </motion.div>
   );
 }
@@ -564,7 +591,7 @@ function PortfolioAnalytics() {
           {ANALYTICS_STATS.map((stat, index) => (
             <Reveal key={stat.label} delay={index * 0.12}>
               <motion.div
-                className="analytics-stat-card"
+                className="analytics-stat-card neon-frame"
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ duration: 0.25 }}
               >
@@ -576,6 +603,7 @@ function PortfolioAnalytics() {
                   />
                 </span>
                 <span className="analytics-stat-label">{stat.label}</span>
+                <NeonTrace />
               </motion.div>
             </Reveal>
           ))}
@@ -584,6 +612,29 @@ function PortfolioAnalytics() {
         <p className="analytics-disclaimer">Skill percentages are personal self-assessments.</p>
       </div>
     </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Technology marquee                                                 */
+/* ------------------------------------------------------------------ */
+
+const TECH_STACK = ["React Native", "React.js", "JavaScript", "C# / .NET", "SQL Server", "SQLite", "Firebase", "REST APIs", "AI Integrations", "Git & GitHub"];
+
+function TechMarquee() {
+  return (
+    <div className="tech-marquee" aria-label="Technologies I work with">
+      <div className="container tech-marquee-heading">TOOLS & TECHNOLOGIES I WORK WITH</div>
+      <div className="tech-marquee-mask">
+        <div className="tech-marquee-track" aria-hidden="true">
+          {[0, 1].map((copy) => (
+            <div className="tech-marquee-group" key={copy}>
+              {TECH_STACK.map((tech) => <span key={`${copy}-${tech}`}><span className="tech-spark">✳</span>{tech}</span>)}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -604,7 +655,7 @@ function About() {
           </h2>
         </Reveal>
 
-        <Reveal delay={0.1} className="about-content">
+        <Reveal delay={0.1} className="about-content neon-frame neon-frame--about">
           <p>
             I'm <strong>Aamir Israr</strong>, a BS Computer Science graduate from PMAS Arid Agriculture University. I enjoy working across the product stack—from the React Native interface you touch to the backend API and data model that power it.
           </p>
@@ -619,6 +670,7 @@ function About() {
           <a className="text-link" href="#experience">
             More About My Experience <ArrowRight size={17} />
           </a>
+          <NeonTrace />
         </Reveal>
       </div>
     </section>
@@ -637,7 +689,7 @@ function Expertise() {
         <div className="expertise-grid">
           {EXPERTISE.map(({ icon: Icon, ...item }, index) => (
             <Reveal key={item.index} delay={index * 0.07} className="expertise-grid-item">
-              <article className={`expertise-card expertise-${item.color}`}>
+              <article className={`expertise-card expertise-${item.color} neon-frame`}>
                 <div className="expertise-card-top">
                   <div className="expertise-icon">
                     <Icon size={24} strokeWidth={1.7} />
@@ -651,6 +703,7 @@ function Expertise() {
                     <span key={tool}>{tool}</span>
                   ))}
                 </div>
+                <NeonTrace />
               </article>
             </Reveal>
           ))}
@@ -767,9 +820,48 @@ function ProjectVisual({ kind }) {
   }
 }
 
-function ProjectCard({ project }) {
+// Discover public repository URLs at runtime; never fabricate a repository path.
+// Direct links explicitly supplied in PROJECTS take precedence over discovery.
+function useGithubRepositories() {
+  const [repositories, setRepositories] = useState([]);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("https://api.github.com/users/aamirabbasii201/repos?per_page=100&type=owner", {
+      signal: controller.signal,
+      headers: { Accept: "application/vnd.github+json" },
+    })
+      .then((response) => response.ok ? response.json() : [])
+      .then((items) => { if (Array.isArray(items)) setRepositories(items.filter((repo) => !repo.private && repo.html_url)); })
+      .catch(() => {});
+    return () => controller.abort();
+  }, []);
+  return repositories;
+}
+
+function getProjectGithubLink(project, repositories) {
+  if (project.github) return { href: project.github, isDirect: true };
+  const normalize = (value) => String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const aliases = project.githubAliases || [];
+  const match = repositories.find((repo) => aliases.some((alias) => {
+    const name = normalize(repo.name);
+    const search = normalize(alias);
+    return name.length >= 5 && search.length >= 6 && (name.includes(search) || search.includes(name));
+  }));
+  return match
+    ? { href: match.html_url, isDirect: true }
+    : { href: `${PROFILE.github}?tab=repositories`, isDirect: false };
+}
+
+function ProjectCard({ project, githubLink }) {
   return (
-    <article className="project-card">
+    <article className="project-card neon-frame">
+      <a
+        className="project-card-overlay"
+        href={githubLink.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={githubLink.isDirect ? `Open ${project.name} on GitHub` : `Browse Aamir's GitHub repositories for ${project.name}`}
+      />
       <div className={`project-visual project-${project.visual}`}>
         <div className="visual-top-label">
           <span>{project.category.toUpperCase()}</span>
@@ -797,17 +889,19 @@ function ProjectCard({ project }) {
             <span key={tool}>{tool}</span>
           ))}
         </div>
-        {project.github && (
-          <a className="project-code-link" href={project.github} target="_blank" rel="noopener noreferrer">
-            Explore Public Repository <ExternalLink size={16} />
-          </a>
-        )}
+        <a className="project-code-link" href={githubLink.href} target="_blank" rel="noopener noreferrer">
+          <Github size={16} />
+          {githubLink.isDirect ? "View GitHub Repository" : "Browse My GitHub Projects"}
+          <ExternalLink size={15} />
+        </a>
       </div>
+      <NeonTrace />
     </article>
   );
 }
 
 function Projects() {
+  const repositories = useGithubRepositories();
   const [filter, setFilter] = useState("All");
   const visibleProjects = useMemo(
     () => (filter === "All" ? PROJECTS : PROJECTS.filter((project) => project.category === filter)),
@@ -837,7 +931,7 @@ function Projects() {
 
         <div className="projects-grid" aria-live="polite">
           {visibleProjects.map((project) => (
-            <ProjectCard project={project} key={project.id} />
+            <ProjectCard project={project} githubLink={getProjectGithubLink(project, repositories)} key={project.id} />
           ))}
         </div>
 
@@ -857,6 +951,56 @@ function Projects() {
 }
 
 /* ------------------------------------------------------------------ */
+/* Testimonials — sample cards for layout preview, not real endorsements */
+/* ------------------------------------------------------------------ */
+
+// Replace these with real, permissioned testimonials before publishing.
+const TESTIMONIALS = [
+  { tag: "MOBILE DEVELOPMENT", title: "Thoughtful app experiences", quote: "Sample feedback: The mobile experience feels purposeful, with clear navigation and attention to the small details that matter.", icon: Smartphone },
+  { tag: "FRONTEND DEVELOPMENT", title: "Interfaces built with care", quote: "Sample feedback: Responsive layouts, considered interactions, and clean structure help turn requirements into something people enjoy using.", icon: Code2 },
+  { tag: "TEAM COLLABORATION", title: "A practical problem solver", quote: "Sample feedback: Communicates progress clearly, works through technical challenges methodically, and stays focused on delivery.", icon: MessageCircle },
+  { tag: "API & DATA", title: "Thinking beyond the screen", quote: "Sample feedback: Understands how frontend components, APIs, and data fit together to create a coherent product.", icon: Database },
+];
+
+function TestimonialCard({ item }) {
+  const Icon = item.icon;
+  return (
+    <article className="testimonial-marquee-card neon-frame">
+      <div className="testimonial-marquee-top"><Quote size={24} /><span>PORTFOLIO PREVIEW</span></div>
+      <p className="testimonial-marquee-copy">{item.quote}</p>
+      <div className="testimonial-marquee-divider" />
+      <div className="testimonial-marquee-person">
+        <span className="testimonial-marquee-avatar"><Icon size={20} /></span>
+        <div><strong>{item.title}</strong><small>{item.tag} · SAMPLE</small></div>
+      </div>
+      <NeonTrace />
+    </article>
+  );
+}
+
+function Testimonials() {
+  return (
+    <section id="testimonials" className="section section-anchor testimonials-section">
+      <div className="container">
+        <SectionHeading number="04" eyebrow="THE HUMAN SIDE OF THE WORK" title="Feedback &" highlight="testimonials.">
+          Great work is built on communication, curiosity, and trust. This space is ready for feedback from collaborators and clients.
+        </SectionHeading>
+        <div className="testimonial-notice"><Sparkles size={17} /><span>Preview testimonials below are illustrative, not verified reviews. Replace with real feedback before publishing.</span></div>
+      </div>
+      <div className="testimonial-marquee" tabIndex={0} aria-label="Sample testimonial cards. Hover or focus to pause scrolling.">
+        <div className="testimonial-marquee-track">
+          {[0, 1].map((copy) => (
+            <div className="testimonial-marquee-group" key={copy} aria-hidden={copy === 1 ? "true" : undefined}>
+              {TESTIMONIALS.map((item) => <TestimonialCard key={item.tag} item={item} />)}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* Experience                                                          */
 /* ------------------------------------------------------------------ */
 
@@ -864,7 +1008,7 @@ function Experience() {
   return (
     <section id="experience" className="section section-anchor experience-section">
       <div className="container">
-        <SectionHeading number="04" eyebrow="MY JOURNEY" title="Experience &" highlight="Education.">
+        <SectionHeading number="05" eyebrow="MY JOURNEY" title="Experience &" highlight="Education.">
           Professional team experience supported by a foundation in computer science and hands-on project development.
         </SectionHeading>
 
@@ -874,7 +1018,7 @@ function Experience() {
               <Reveal key={job.employer} delay={index * 0.1}>
                 <article className="experience-item">
                   <div className="experience-marker"><BriefcaseBusiness size={18} /></div>
-                  <div className="experience-body">
+                  <div className="experience-body neon-frame">
                     <div className="experience-top">
                       <div>
                         <span className="experience-company">{job.employer}</span>
@@ -889,13 +1033,14 @@ function Experience() {
                       ))}
                     </div>
                     <div className="experience-place"><MapPin size={14} />{job.place}</div>
+                    <NeonTrace />
                   </div>
                 </article>
               </Reveal>
             ))}
           </div>
 
-          <Reveal delay={0.16} className="education-card">
+          <Reveal delay={0.16} className="education-card neon-frame">
             <div className="education-icon"><GraduationCap size={27} /></div>
             <span className="education-kicker">EDUCATION</span>
             <h3>Bachelor of Science in Computer Science</h3>
@@ -905,7 +1050,138 @@ function Experience() {
             <p className="education-note">
               Academic projects in mobile development, web engineering, databases, desktop applications, and digital logic design.
             </p>
+            <NeonTrace />
           </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* How I work & philosophy                                            */
+/* ------------------------------------------------------------------ */
+
+const WORKFLOW = [
+  { number: "01", icon: Lightbulb, title: "Understand", phase: "Explore the problem", copy: "Clarify the goal, user needs, constraints, and what success actually looks like.", outputs: ["Requirements", "User journey", "Success criteria"] },
+  { number: "02", icon: Layers3, title: "Design & Build", phase: "Create with intention", copy: "Turn the plan into a modular, responsive implementation with clean integrations and usable interfaces.", outputs: ["Interface structure", "App architecture", "API integration"] },
+  { number: "03", icon: Rocket, title: "Refine & Deliver", phase: "Test, improve, ship", copy: "Validate key flows, improve details, and get the project ready for real-world use and iteration.", outputs: ["Functional testing", "Performance review", "Handover"] },
+];
+
+function Approach() {
+  return (
+    <section id="approach" className="section section-anchor developer-approach-section">
+      <div className="container">
+        <SectionHeading number="06" eyebrow="HOW I APPROACH PROJECTS" title="Less complexity." highlight="More clarity.">
+          A simple, collaborative process that keeps a project grounded—from the first question to the final detail.
+        </SectionHeading>
+        <div className="developer-approach-grid">
+          <Reveal className="developer-approach-aside neon-frame">
+            <span className="developer-process-kicker"><Target size={16}/> THE WORKING MINDSET</span>
+            <h3>Good products begin with the right questions.</h3>
+            <p>I like to understand why a feature matters before deciding how to build it. From interface decisions to API design, the goal is dependable software that people can use comfortably.</p>
+            <div className="developer-process-points">
+              <span><CheckCircle2 size={17}/> Usability before complexity</span>
+              <span><CheckCircle2 size={17}/> Clear communication</span>
+              <span><CheckCircle2 size={17}/> Thoughtful iteration</span>
+            </div>
+            <a href="#contact" className="developer-process-contact">Have a project in mind? <ArrowUpRight size={18}/></a>
+            <NeonTrace />
+          </Reveal>
+          <div className="developer-approach-steps">
+            {WORKFLOW.map(({ number, icon: Icon, title, phase, copy, outputs }, index) => (
+              <Reveal key={number} delay={index * 0.1}>
+                <article className="developer-step-card neon-frame">
+                  <div className="developer-step-meta"><span>{number} / 03</span><span className="developer-step-icon"><Icon size={21}/></span></div>
+                  <div className="developer-step-phase">{phase}</div>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                  <div className="developer-step-outputs">{outputs.map((output) => <span key={output}><Check size={13}/>{output}</span>)}</div>
+                  <NeonTrace />
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+        <div className="developer-approach-finish">
+          <Reveal><article className="developer-finish-card neon-frame">
+            <div className="developer-finish-top"><span>BEYOND THE CODE</span><TrendingUp size={22}/></div>
+            <h3>Build for the <em>next iteration.</em></h3>
+            <p>Software is never only about getting a screen to work. It's about maintainable decisions, reliable integrations, and the flexibility to improve what comes next.</p>
+            <div className="developer-finish-list"><span><Check size={16}/> Readable components</span><span><Check size={16}/> Practical solutions</span><span><Check size={16}/> Continuous learning</span></div>
+            <NeonTrace />
+          </article></Reveal>
+          <Reveal delay={0.12}><article className="developer-finish-card developer-finish-card--blue neon-frame">
+            <div className="developer-finish-top"><span>WHAT SUCCESS LOOKS LIKE</span><CheckCircle2 size={22}/></div>
+            <h3>Experiences people <em>can trust.</em></h3>
+            <p>The result I'm aiming for: polished interactions on the surface, well-considered systems behind the scenes, and a solution that actually serves its users.</p>
+            <div className="developer-finish-list"><span><Check size={16}/> Clear user experience</span><span><Check size={16}/> Connected functionality</span><span><Check size={16}/> Room to grow</span></div>
+            <NeonTrace />
+          </article></Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DeveloperStatement() {
+  return (
+    <section className="developer-statement-section" aria-label="My development philosophy">
+      <div className="container developer-statement-inner">
+        <div className="developer-statement-editorial">
+          <Reveal className="developer-statement-portrait-column">
+            <figure className="developer-statement-portrait-frame neon-frame neon-frame--portrait">
+              <img
+                src="/images/aamir-philosophy-standing.webp"
+                alt="Aamir Israr standing in a modern software development workspace"
+                loading="lazy"
+                decoding="async"
+                width="770"
+                height="1024"
+              />
+              <figcaption className="developer-statement-photo-caption">
+                <span className="developer-statement-caption-mark" aria-hidden="true" />
+                <span><strong>AAMIR ISRAR</strong><small>SOFTWARE DEVELOPER</small></span>
+                <Code2 size={20} strokeWidth={1.6} aria-hidden="true" />
+              </figcaption>
+              <NeonTrace />
+            </figure>
+            <div className="developer-statement-photo-caption-bottom" aria-hidden="true">
+              IDEA <span>·</span> CODE <span>·</span> BUILD <span>·</span> IMPROVE
+            </div>
+          </Reveal>
+
+          <div className="developer-statement-copy">
+            <Reveal>
+              <div className="developer-statement-quote">
+                <Quote size={32} strokeWidth={1.6} aria-hidden="true" />
+                <span>MY DEVELOPMENT PHILOSOPHY</span>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <h2>Great software doesn't just <em>work.</em> It makes things <span>simpler.</span></h2>
+            </Reveal>
+            <Reveal delay={0.13}>
+              <p className="developer-statement-description">
+                I believe meaningful software begins with understanding people and the problems they face.
+                From thoughtful interfaces to reliable APIs, I focus on building clear, maintainable solutions
+                that create real value and can evolve over time.
+              </p>
+            </Reveal>
+            <Reveal delay={0.18}>
+              <div className="developer-statement-values" aria-label="Development values">
+                <span><Target size={17} /> User-focused thinking</span>
+                <span><Code2 size={17} /> Clean, scalable code</span>
+                <span><TrendingUp size={17} /> Continuous improvement</span>
+              </div>
+            </Reveal>
+            <Reveal delay={0.22}>
+              <div className="developer-statement-bottom">
+                <span>AAMIR ISRAR / REACT NATIVE & FULL-STACK DEVELOPER</span>
+                <a href="#contact">LET'S BUILD SOMETHING <ArrowUpRight size={17} /></a>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>
@@ -916,24 +1192,18 @@ function Experience() {
 /* Contact & Footer                                                    */
 /* ------------------------------------------------------------------ */
 
-const CONTACT_FORM_ENDPOINT =
-  "https://formspree.io/f/mljgpvvw";
+// Add your own Formspree endpoint here before deploying. The original
+// endpoint belonged to a different portfolio and should not receive Aamir's mail.
+const CONTACT_FORM_ENDPOINT = "";
 
 function Contact() {
   const [copied, setCopied] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [formStatus, setFormStatus] = useState({
-    type: "",
-    message: "",
-  });
+  const [formStatus, setFormStatus] = useState({ type: "", message: "" });
 
   useEffect(() => {
     if (!copied) return;
-
-    const timer = setTimeout(() => {
-      setCopied(false);
-    }, 2200);
-
+    const timer = setTimeout(() => setCopied(false), 2200);
     return () => clearTimeout(timer);
   }, [copied]);
 
@@ -948,276 +1218,168 @@ function Contact() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     if (isSending) return;
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
-    if (CONTACT_FORM_ENDPOINT.includes("YOUR_FORM_ID")) {
+    if (!CONTACT_FORM_ENDPOINT) {
+      const sender = String(formData.get("name") || "Visitor");
+      const reply = String(formData.get("email") || "");
+      const subject = String(formData.get("subject") || "Project enquiry");
+      const message = String(formData.get("message") || "");
+      const body = `${message}\n\nFrom: ${sender}\nReply to: ${reply}`;
+      window.location.href = `mailto:${PROFILE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       setFormStatus({
-        type: "error",
-        message: "Please configure your Formspree endpoint.",
+        type: "info",
+        message: "Your email app should open with your project brief. Please press Send there to deliver it.",
       });
       return;
     }
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
     setIsSending(true);
     setFormStatus({ type: "", message: "" });
-
     try {
       const response = await fetch(CONTACT_FORM_ENDPOINT, {
         method: "POST",
         body: formData,
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
       });
-
-      if (!response.ok) {
-        throw new Error("Message delivery failed.");
-      }
-
+      if (!response.ok) throw new Error("Message delivery failed");
       form.reset();
-
-      setFormStatus({
-        type: "success",
-        message: "Thank you! Your message has been sent successfully.",
-      });
+      setFormStatus({ type: "success", message: "Message sent successfully. Thank you for reaching out!" });
     } catch {
-      setFormStatus({
-        type: "error",
-        message: "Unable to send. Please try again or email me directly.",
-      });
+      setFormStatus({ type: "error", message: "Couldn't submit the form. Please email me directly instead." });
     } finally {
       setIsSending(false);
     }
   };
 
   return (
-    <section
-      id="contact"
-      className="section section-anchor contact-section"
-    >
+    <section id="contact" className="section section-anchor contact-section reach-section">
       <div className="container">
         <Reveal>
-          <div className="contact-panel">
-            <div
-              className="contact-glow"
-              aria-hidden="true"
-            />
-
-            <div className="contact-inner">
-              <Eyebrow number="05">
-                LET'S CONNECT
-              </Eyebrow>
-
-              <h2>
-                Have a question{" "}
-                <span className="text-gradient">
-                  or project idea?
-                </span>
-              </h2>
-
-              <p>
-                Have a project, collaboration, job opportunity,
-                or general question? Feel free to get in touch.
-              </p>
-
-              {/* CONTACT FORM */}
-              <form
-                className="portfolio-contact-form"
-                onSubmit={handleSubmit}
-              >
-                <div
-                  className="contact-honeypot"
-                  aria-hidden="true"
-                >
-                  <label htmlFor="contact-website">
-                    Leave empty
-                  </label>
-                  <input
-                    id="contact-website"
-                    type="text"
-                    name="_gotcha"
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
-                </div>
-
-                <div className="contact-form-grid">
-
-                  {/* NAME */}
-                  <div className="contact-field">
-                    <label htmlFor="contact-name">
-                      Full Name *
-                    </label>
-
-                    <input
-                      id="contact-name"
-                      type="text"
-                      name="name"
-                      placeholder="Enter your full name"
-                      autoComplete="name"
-                      minLength={2}
-                      maxLength={100}
-                      required
-                    />
-                  </div>
-
-                  {/* EMAIL */}
-                  <div className="contact-field">
-                    <label htmlFor="contact-email">
-                      Email Address *
-                    </label>
-
-                    <input
-                      id="contact-email"
-                      type="email"
-                      name="email"
-                      placeholder="you@example.com"
-                      autoComplete="email"
-                      maxLength={254}
-                      required
-                    />
-                  </div>
-
-                  {/* SUBJECT */}
-                  <div className="contact-field contact-field-full">
-                    <label htmlFor="contact-subject">
-                      Subject *
-                    </label>
-
-                    <input
-                      id="contact-subject"
-                      type="text"
-                      name="subject"
-                      placeholder="What would you like to discuss?"
-                      maxLength={150}
-                      required
-                    />
-                  </div>
-
-                  {/* MESSAGE */}
-                  <div className="contact-field contact-field-full">
-                    <label htmlFor="contact-message">
-                      Your Message *
-                    </label>
-
-                    <textarea
-                      id="contact-message"
-                      name="message"
-                      rows={6}
-                      minLength={10}
-                      maxLength={5000}
-                      placeholder="Tell me about your question or project..."
-                      required
-                    />
-                  </div>
-                </div>
-
-                {/* SEND BUTTON */}
-                <div className="contact-form-bottom">
-                  <span className="contact-form-help">
-                    I'll be happy to hear from you.
-                  </span>
-
-                  <button
-                    type="submit"
-                    className="button button-primary contact-send"
-                    disabled={isSending}
-                  >
-                    {isSending ? "Sending..." : "Send Message"}
-
-                    {!isSending && (
-                      <ArrowUpRight size={18} />
-                    )}
-                  </button>
-                </div>
-
-                {/* SUCCESS / ERROR */}
-                {formStatus.message && (
-                  <p
-                    className={`contact-form-status contact-form-status--${formStatus.type}`}
-                    role={
-                      formStatus.type === "error"
-                        ? "alert"
-                        : "status"
-                    }
-                  >
-                    {formStatus.message}
-                  </p>
-                )}
-              </form>
-
-              {/* EXISTING CONTACT OPTIONS */}
-              <div className="contact-actions">
-                <a
-                  href={`mailto:${PROFILE.email}`}
-                  className="button button-secondary"
-                >
-                  <Mail size={18} />
-                  Email Directly
-                  <ArrowUpRight size={17} />
-                </a>
-
-                <button
-                  type="button"
-                  className="button button-secondary"
-                  onClick={copyEmail}
-                >
-                  {copied ? (
-                    <Check size={17} />
-                  ) : (
-                    <MousePointer2 size={17} />
-                  )}
-
-                  {copied ? "Email Copied" : "Copy Email"}
-                </button>
-              </div>
-
-              <div className="contact-email">
-                {PROFILE.email}
-              </div>
-
-              <div className="contact-profiles">
-                <a
-                  href={PROFILE.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub <ArrowUpRight size={14} />
-                </a>
-
-                <a
-                  href={PROFILE.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn <ArrowUpRight size={14} />
-                </a>
-
-                <span>
-                  <MapPin size={14} />
-                  {PROFILE.location}
-                </span>
-              </div>
-            </div>
+          <div className="reach-eyebrow">
+            <Eyebrow number="07">LET'S CONNECT</Eyebrow>
+            <span className="reach-eyebrow-rule" />
+            <span>OPEN TO CONVERSATIONS & COLLABORATION</span>
           </div>
         </Reveal>
+
+        <div className="reach-layout">
+          <Reveal className="reach-left">
+            <p className="reach-pretitle">HAVE AN IDEA WORTH BUILDING?</p>
+            <h2>Let's build<br /><em>something</em><br /><span>remarkable.</span></h2>
+            <p className="reach-description">
+              Whether you're planning a mobile app, a modern website, or an API-powered product,
+              I'd love to hear what you're working on. Choose the channel that suits you best.
+            </p>
+
+            <div className="reach-channels" aria-label="Contact Aamir Israr">
+              <a href={PROFILE.whatsapp} className="reach-channel reach-channel--whatsapp neon-frame" target="_blank" rel="noopener noreferrer">
+                <span className="reach-channel-icon"><FaWhatsapp size={23} aria-hidden="true" /></span>
+                <span className="reach-channel-copy"><strong>Chat on WhatsApp</strong><small>Quick questions & project discussions</small></span>
+                <ArrowUpRight className="reach-channel-arrow" size={18} aria-hidden="true" />
+                <NeonTrace />
+              </a>
+
+              <div className="reach-channel reach-channel--email neon-frame">
+                <a href={`mailto:${PROFILE.email}`} className="reach-channel-main">
+                  <span className="reach-channel-icon"><Mail size={22} aria-hidden="true" /></span>
+                  <span className="reach-channel-copy"><strong>{PROFILE.email}</strong><small>Detailed enquiries and opportunities</small></span>
+                </a>
+                <button type="button" className="reach-copy" onClick={copyEmail} aria-label={copied ? "Email address copied" : "Copy email address"} title={copied ? "Copied!" : "Copy email"}>
+                  {copied ? <Check size={17} /> : <Copy size={17} />}
+                </button>
+                <NeonTrace />
+              </div>
+
+              <a href={PROFILE.linkedin} className="reach-channel reach-channel--linkedin neon-frame" target="_blank" rel="noopener noreferrer">
+                <span className="reach-channel-icon"><Linkedin size={22} aria-hidden="true" /></span>
+                <span className="reach-channel-copy"><strong>Connect on LinkedIn</strong><small>Professional networking & career opportunities</small></span>
+                <ArrowUpRight className="reach-channel-arrow" size={18} aria-hidden="true" />
+                <NeonTrace />
+              </a>
+
+              <a href={PROFILE.github} className="reach-channel reach-channel--github neon-frame" target="_blank" rel="noopener noreferrer">
+                <span className="reach-channel-icon"><Github size={22} aria-hidden="true" /></span>
+                <span className="reach-channel-copy"><strong>Explore my GitHub</strong><small>Repositories, projects & code</small></span>
+                <ArrowUpRight className="reach-channel-arrow" size={18} aria-hidden="true" />
+                <NeonTrace />
+              </a>
+            </div>
+
+            <div className="reach-location"><MapPin size={15} aria-hidden="true" /><span>{PROFILE.location}</span></div>
+          </Reveal>
+
+          <Reveal className="reach-form-reveal" delay={0.12}>
+            <div className="reach-form-card neon-frame">
+              <div className="reach-form-header">
+                <span className="reach-form-heading-icon"><BriefcaseBusiness size={22} strokeWidth={1.7} /></span>
+                <span><small>LET'S TALK ABOUT YOUR IDEA</small><strong>Send a Project Brief</strong></span>
+                <Sparkles className="reach-form-sparkle" size={20} aria-hidden="true" />
+              </div>
+
+              <form className="reach-form" onSubmit={handleSubmit}>
+                <div className="reach-honeypot" aria-hidden="true">
+                  <label htmlFor="reach-website">Leave empty</label>
+                  <input id="reach-website" name="_gotcha" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
+                <div className="reach-field-row">
+                  <div className="reach-field"><label htmlFor="reach-name">Full name <span>*</span></label><input id="reach-name" name="name" type="text" autoComplete="name" placeholder="Your full name" minLength={2} maxLength={100} required /></div>
+                  <div className="reach-field"><label htmlFor="reach-email">Email address <span>*</span></label><input id="reach-email" name="email" type="email" autoComplete="email" placeholder="you@company.com" maxLength={254} required /></div>
+                </div>
+                <div className="reach-field"><label htmlFor="reach-subject">Subject <span>*</span></label><input id="reach-subject" name="subject" type="text" placeholder="What would you like to build?" maxLength={150} required /></div>
+                <div className="reach-field"><label htmlFor="reach-message">Project details <span>*</span></label><textarea id="reach-message" name="message" placeholder="Tell me about the project, your goals and any useful details…" rows={6} minLength={10} maxLength={5000} required /></div>
+                <div className="reach-form-footer">
+                  <p>No pressure, just a conversation about what we can build.</p>
+                  <button type="submit" disabled={isSending} className="reach-submit"><span>{isSending ? "Sending…" : "Send Message"}</span><Send size={18} aria-hidden="true" /></button>
+                </div>
+                {formStatus.message && <p className={`reach-form-status reach-form-status--${formStatus.type}`} role={formStatus.type === "error" ? "alert" : "status"}>{formStatus.message}</p>}
+              </form>
+              <NeonTrace />
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
 }
 
+const FOOTER_SOCIALS = [
+  { label: "GitHub", href: PROFILE.github, Icon: Github, external: true },
+  { label: "LinkedIn", href: PROFILE.linkedin, Icon: Linkedin, external: true },
+  { label: "Email", href: `mailto:${PROFILE.email}`, Icon: Mail, external: false },
+  { label: "WhatsApp", href: PROFILE.whatsapp, Icon: FaWhatsapp, external: true },
+];
+
 function Footer() {
   return (
     <footer className="footer">
-      <div className="container footer-inner">
-        <a href="#home" className="footer-logo">Aamir<span>.</span></a>
+      <div className="container footer-main">
+        <div className="footer-identity">
+          <a href="#home" className="footer-logo">Aamir<span>.</span></a>
+          <p>Building thoughtful digital products with React Native, React, APIs, and a commitment to the details.</p>
+        </div>
+        <div className="footer-links-group">
+          <span className="footer-group-label">QUICK LINKS</span>
+          <div className="footer-quick-links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#testimonials">Testimonials</a><a href="#contact">Contact</a></div>
+        </div>
+        <div className="footer-social-group">
+          <span className="footer-group-label">LET'S CONNECT</span>
+          <div className="footer-social-icons">
+            {FOOTER_SOCIALS.map(({ label, href, Icon, external }) => (
+              <a key={label} href={href} aria-label={label} title={label} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+                <Icon size={21} />
+              </a>
+            ))}
+          </div>
+          <a className="footer-email-link" href={`mailto:${PROFILE.email}`}>{PROFILE.email}<ArrowUpRight size={14}/></a>
+        </div>
+      </div>
+      <div className="container footer-bottom">
+        <span>© {new Date().getFullYear()} {PROFILE.name}. All rights reserved.</span>
         <span>Designed & developed with React.</span>
-        <span>© {new Date().getFullYear()} {PROFILE.name}</span>
-        <a href="#home" aria-label="Back to top">Back to top ↑</a>
+        <a href="#home">Back to top <ArrowUpRight size={15}/></a>
       </div>
     </footer>
   );
@@ -1248,10 +1410,14 @@ export default function App() {
       <main>
         <Hero />
         <PortfolioAnalytics />
+        <TechMarquee />
         <About />
         <Expertise />
         <Projects />
+        <Testimonials />
         <Experience />
+        <Approach />
+        <DeveloperStatement />
         <Contact />
       </main>
       <Footer />
