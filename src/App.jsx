@@ -406,7 +406,7 @@ function HeroArtwork() {
         />
         <figcaption className="hero-photo-caption">
           <span className="status-dot" />
-          Software Developer
+          React Native Developer
         </figcaption>
         <NeonTrace />
       </motion.figure>
@@ -1192,9 +1192,8 @@ function DeveloperStatement() {
 /* Contact & Footer                                                    */
 /* ------------------------------------------------------------------ */
 
-// Add your own Formspree endpoint here before deploying. The original
-// endpoint belonged to a different portfolio and should not receive Aamir's mail.
-const CONTACT_FORM_ENDPOINT = "";
+// Formspree endpoint supplied by the portfolio owner.
+const FORM_ENDPOINT = "https://formspree.io/f/mljgpvvw";
 
 function Contact() {
   const [copied, setCopied] = useState(false);
@@ -1222,7 +1221,7 @@ function Contact() {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    if (!CONTACT_FORM_ENDPOINT) {
+    if (!FORM_ENDPOINT) {
       const sender = String(formData.get("name") || "Visitor");
       const reply = String(formData.get("email") || "");
       const subject = String(formData.get("subject") || "Project enquiry");
@@ -1239,7 +1238,7 @@ function Contact() {
     setIsSending(true);
     setFormStatus({ type: "", message: "" });
     try {
-      const response = await fetch(CONTACT_FORM_ENDPOINT, {
+      const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
